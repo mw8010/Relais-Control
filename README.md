@@ -25,6 +25,10 @@ The Signal K path used by default is:
 
 **electrical.lights.<cabin>.<aft>.state**
 
+Examples:
+- Saloon forward (cabin=saloon, aft=forward): `electrical.lights.saloon.forward.state`
+- Cockpit starboard (cabin=cockpit, aft=starboard): `electrical.lights.cockpit.starboard.state`
+
 (Replace `<cabin>` and `<aft>` with names used in your Signal K system.)
 
 **Important:** Before compiling, adjust the `sk_path_relay_state` constant in `main.cpp` to match your own naming. Replace the placeholders (`<cabin>`, `<aft>`) or the entire path with the Signal K path you use (e.g. `electrical.lights.saloon.forward.state`). This change must be made before compiling and uploading to the ESP.

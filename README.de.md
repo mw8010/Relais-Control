@@ -22,6 +22,10 @@ Der standardmäßig verwendete Signal K‑Pfad ist:
 
 **electrical.lights.<cabin>.<aft>.state**
 
+Beispiele:
+- Saloon vorne (cabin=saloon, aft=forward): `electrical.lights.saloon.forward.state`
+- Plicht Steuerbord (cabin=cockpit, aft=starboard): `electrical.lights.cockpit.starboard.state`
+
 (Ersetze `<cabin>` und `<aft>` durch deine eigenen Bezeichnungen.)
 
 **Wichtig:** Passe vor dem Kompilieren in `main.cpp` die Konstante `sk_path_relay_state` an deine Namensgebung an. Ersetze die Platzhalter (`<cabin>`, `<aft>`) oder setze einen anderen Pfad, z. B.:
