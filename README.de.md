@@ -20,7 +20,9 @@ ESP32-basiertes Relais-/Licht‑Steuerungsprojekt mit **SenseESP** zur Integrati
 
 Der standardmäßig verwendete Signal K‑Pfad ist:
 
-**electrical.lights.cabin.aft.state**
+**electrical.lights.<cabin>.<aft>.state**
+
+(Ersetze `<cabin>` und `<aft>` durch deine eigenen Bezeichnungen.)
 
 **Wichtig:** Passe vor dem Kompilieren in `main.cpp` die Konstante `sk_path_relay_state` an deine Namensgebung an. Ersetze die Platzhalter (`<cabin>`, `<aft>`) oder setze einen anderen Pfad, z. B.:
 
@@ -90,7 +92,7 @@ Payload: true oder false
 Typ: Boolean
 
 **Signal K PUT node:**
-Pfad: electrical.lights.cabin.aft.state
+Pfad: electrical.lights.<cabin>.<aft>.state
 
 **Ziel:** self
 **Server:** dein Signal K-Server

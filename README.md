@@ -23,7 +23,9 @@ The light can be switched **locally by a push button** or **remotely via Signal 
 
 The Signal K path used by default is:
 
-**electrical.lights.cabin.aft.state**
+**electrical.lights.<cabin>.<aft>.state**
+
+(Replace `<cabin>` and `<aft>` with names used in your Signal K system.)
 
 **Important:** Before compiling, adjust the `sk_path_relay_state` constant in `main.cpp` to match your own naming. Replace the placeholders (`<cabin>`, `<aft>`) or the entire path with the Signal K path you use (e.g. `electrical.lights.saloon.forward.state`). This change must be made before compiling and uploading to the ESP.
 
@@ -84,7 +86,7 @@ npm install node-red-contrib-signalk
 Create a flow like this:
 
 - **inject node:** payload true or false (Boolean)
-- **Signal K PUT node:** Path: `electrical.lights.cabin.aft.state`  Target: self  Server: your Signal K server
+- **Signal K PUT node:** Path: `electrical.lights.<cabin>.<aft>.state`  Target: self  Server: your Signal K server
 
 Connect: inject → Signal K PUT → debug
 
