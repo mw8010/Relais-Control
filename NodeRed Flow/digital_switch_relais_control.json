@@ -1,1 +1,101 @@
-[{"id":"9348b634e0e6c08e","type":"group","z":"5724a9800bc1ccf0","name":"⚡💡 Relaissteuerung","style":{"label":true,"stroke":"#0070c0","color":"#3f93cf","fill":"#d1d1d1","fill-opacity":"0.4"},"nodes":["762d147a0072f8ab","1abd42c70ca6a0b4","e7e31c922af2d3df","8148417de5657609","3b66a8ad4048fc72"],"x":54,"y":59,"w":1132,"h":122},{"id":"762d147a0072f8ab","type":"signalk-subscribe","z":"5724a9800bc1ccf0","g":"9348b634e0e6c08e","name":"Subscribe - SignalK - Light Cabin Aft","mode":"sendChanges","flatten":true,"context":"vessels.self","path":"electrical.lights.cabin.aft.state","source":"<YOUR_SIGNALK_WS>","period":1000,"x":220,"y":100,"wires":[["1abd42c70ca6a0b4"]]},{"id":"1abd42c70ca6a0b4","type":"function","z":"5724a9800bc1ccf0","g":"9348b634e0e6c08e","name":"Switch weitergabe","func":"// alten Status aus context holen\nlet oldState = context.get('oldState');\n\n// prüfen, ob msg.payload boolean ist\nif (typeof msg.payload === 'boolean') {\n    if (msg.payload !== oldState) {\n        // Status hat sich geändert -> weiterleiten\n        context.set('oldState', msg.payload);\n        return msg; // geht an PUT Node\n    } else {\n        // Status gleich -> nichts tun\n        return null;\n    }\n} else {\n    // keine boolean Nachricht -> ignorieren\n    return null;\n}\n","outputs":1,"timeout":0,"noerr":0,"initialize":"","finalize":"","libs":[],"x":670,"y":120,"wires":[["e7e31c922af2d3df","8148417de5657609"]]},{"id":"e7e31c922af2d3df","type":"signalk-send-pathvalue","z":"5724a9800bc1ccf0","g":"9348b634e0e6c08e","name":"Send Pathvalue SignalK - Light Cabin Aft","path":"electrical.lights.cabin.aft.state","source":"<YOUR_SIGNALK_WS>","meta":"","x":1000,"y":140,"wires":[]},{"id":"8148417de5657609","type":"signalk-send-put","z":"5724a9800bc1ccf0","g":"9348b634e0e6c08e","name":"Send Put - SignalK - Light Cabin Aft","path":"electrical.lights.cabin.aft.state","source":"<YOUR_SIGNALK_WS>","x":980,"y":100,"wires":[]},{"id":"3b66a8ad4048fc72","type":"signalk-put-handler","z":"5724a9800bc1ccf0","g":"9348b634e0e6c08e","name":"PUT Handler - KiP - Light Cabin Aft","path":"electrical.lights.cabin.aft.state","x":220,"y":140,"wires":[["1abd42c70ca6a0b4"]]},{"id":"c9cfba81eacd304e","type":"global-config","env":[],"modules":{"@signalk/node-red-embedded":"2.18.2"}}]
+[
+	{
+		"id": "9348b634e0e6c08e",
+		"type": "group",
+		"z": "5724a9800bc1ccf0",
+		"name": "⚡💡 Relais - Control",
+		"style": {
+			"label": true,
+			"stroke": "#0070c0",
+			"color": "#3f93cf",
+			"fill": "#d1d1d1",
+			"fill-opacity": "0.4"
+		},
+		"nodes": [
+			"762d147a0072f8ab",
+			"1abd42c70ca6a0b4",
+			"e7e31c922af2d3df",
+			"8148417de5657609",
+			"3b66a8ad4048fc72"
+		],
+		"x": 54,
+		"y": 59,
+		"w": 1132,
+		"h": 122
+	},
+	{
+		"id": "762d147a0072f8ab",
+		"type": "signalk-subscribe",
+		"z": "5724a9800bc1ccf0",
+		"g": "9348b634e0e6c08e",
+		"name": "Subscribe - SignalK - Light Cabin Aft",
+		"mode": "sendChanges",
+		"flatten": true,
+		"context": "vessels.self",
+		"path": "electrical.lights.cabin.aft.state",
+		"source": "<YOUR_SIGNALK_WS>",
+		"period": 1000,
+		"x": 220,
+		"y": 100,
+		"wires": [["1abd42c70ca6a0b4"]]
+	},
+	{
+		"id": "1abd42c70ca6a0b4",
+		"type": "function",
+		"z": "5724a9800bc1ccf0",
+		"g": "9348b634e0e6c08e",
+		"name": "Switch weitergabe",
+		"func": "// alten Status aus context holen\nlet oldState = context.get('oldState');\n\n// prüfen, ob msg.payload boolean ist\nif (typeof msg.payload === 'boolean') {\n    if (msg.payload !== oldState) {\n        // Status hat sich geändert -> weiterleiten\n        context.set('oldState', msg.payload);\n        return msg; // geht an PUT Node\n    } else {\n        // Status gleich -> nichts tun\n        return null;\n    }\n} else {\n    // keine boolean Nachricht -> ignorieren\n    return null;\n}\n",
+		"outputs": 1,
+		"timeout": 0,
+		"noerr": 0,
+		"initialize": "",
+		"finalize": "",
+		"libs": [],
+		"x": 670,
+		"y": 120,
+		"wires": [["e7e31c922af2d3df", "8148417de5657609"]]
+	},
+	{
+		"id": "e7e31c922af2d3df",
+		"type": "signalk-send-pathvalue",
+		"z": "5724a9800bc1ccf0",
+		"g": "9348b634e0e6c08e",
+		"name": "Send Pathvalue SignalK - Light Cabin Aft",
+		"path": "electrical.lights.cabin.aft.state",
+		"source": "<YOUR_SIGNALK_WS>",
+		"meta": "",
+		"x": 1000,
+		"y": 140,
+		"wires": []
+	},
+	{
+		"id": "8148417de5657609",
+		"type": "signalk-send-put",
+		"z": "5724a9800bc1ccf0",
+		"g": "9348b634e0e6c08e",
+		"name": "Send Put - SignalK - Light Cabin Aft",
+		"path": "electrical.lights.cabin.aft.state",
+		"source": "<YOUR_SIGNALK_WS>",
+		"x": 980,
+		"y": 100,
+		"wires": []
+	},
+	{
+		"id": "3b66a8ad4048fc72",
+		"type": "signalk-put-handler",
+		"z": "5724a9800bc1ccf0",
+		"g": "9348b634e0e6c08e",
+		"name": "PUT Handler - KiP - Light Cabin Aft",
+		"path": "electrical.lights.cabin.aft.state",
+		"x": 220,
+		"y": 140,
+		"wires": [["1abd42c70ca6a0b4"]]
+	},
+	{
+		"id": "c9cfba81eacd304e",
+		"type": "global-config",
+		"env": [],
+		"modules": {"@signalk/node-red-embedded": "2.18.2"}
+	}
+]
