@@ -149,5 +149,6 @@ Taster-Toggle für Relais (LOW-aktiv)...
 
 ⚡ Lizenz
 ![license](https://img.shields.io/badge/license-GPLv3-blue) ![license-hw](https://img.shields.io/badge/hardware-CERN%20OHL--S%20v2-orange)
-Software — GPLv3 (see `LICENSE`); 
-Hardware — CERN OHL-S v2 (see `LICENSE-HARDWARE`).
+
+- Software — GPLv3 (see `LICENSE`);
+- Hardware — CERN OHL-S v2 (see `LICENSE-HARDWARE`).
